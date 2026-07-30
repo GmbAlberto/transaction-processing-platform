@@ -8,7 +8,7 @@ import com.bethocr.transactionservice.entity.TransactionStatus;
 import com.bethocr.transactionservice.exception.TransactionNotFoundException;
 import com.bethocr.transactionservice.mapper.TransactionMapper;
 import com.bethocr.transactionservice.repository.TransactionRepository;
-import com.bethocr.transactionservice.service.ReferenceGenerator;
+import com.bethocr.transactionservice.service.ReferenceService;
 import com.bethocr.transactionservice.service.TransactionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
@@ -22,14 +22,14 @@ import java.util.List;
 public class TransactionServiceImpl implements TransactionService {
     private final TransactionRepository transactionRepository;
     private final TransactionMapper transactionMapper;
-    private final ReferenceGenerator referenceGenerator;
+    private final ReferenceService referenceService;
 
     @Override
     @Transactional
     public TransactionResponse create(TransactionRequest request) {
         Transaction transaction = transactionMapper.toEntity(request);
 
-        transaction.setReference(referenceGenerator.generate());
+        transaction.setReference(referenceService.generate());
         transaction.setStatus(TransactionStatus.APPROVED);
 
         Transaction savedTransaction = transactionRepository.save(transaction);

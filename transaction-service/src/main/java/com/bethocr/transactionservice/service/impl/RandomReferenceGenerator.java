@@ -1,15 +1,16 @@
-package com.bethocr.transactionservice.service;
+package com.bethocr.transactionservice.service.impl;
 
 import com.bethocr.transactionservice.exception.ReferenceGenerationException;
 import com.bethocr.transactionservice.repository.TransactionRepository;
+import com.bethocr.transactionservice.service.ReferenceService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 
-@Component
+@Service
 @RequiredArgsConstructor
-public class ReferenceGenerator {
+public class RandomReferenceGenerator implements ReferenceService {
     private final SecureRandom secureRandom = new SecureRandom();
     private final TransactionRepository transactionRepository;
 

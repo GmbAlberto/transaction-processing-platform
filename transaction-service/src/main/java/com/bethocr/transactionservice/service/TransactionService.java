@@ -9,9 +9,9 @@ import java.util.List;
 public interface TransactionService {
     TransactionResponse create(TransactionRequest request);
 
+    TransactionResponse updateStatus(TransactionStatusUpdateRequest request);
+
     TransactionResponse findById(Long id);
 
     List<TransactionResponse> findAll();
-
-    TransactionResponse updateStatus(TransactionStatusUpdateRequest request);
 }
