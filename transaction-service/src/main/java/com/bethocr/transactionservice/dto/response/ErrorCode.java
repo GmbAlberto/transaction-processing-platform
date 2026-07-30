@@ -1,0 +1,11 @@
+package com.bethocr.transactionservice.dto.response;
+
+public enum ErrorCode {
+    VALIDATION_ERROR,
+    CONSTRAINT_VIOLATION,
+    MALFORMED_JSON,
+    TRANSACTION_NOT_FOUND,
+    REFERENCE_GENERATION_ERROR,
+    DATA_INTEGRITY_VIOLATION,
+    INTERNAL_SERVER_ERROR
+}
