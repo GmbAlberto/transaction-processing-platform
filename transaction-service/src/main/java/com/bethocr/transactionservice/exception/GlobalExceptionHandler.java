@@ -88,6 +88,18 @@ public class GlobalExceptionHandler {
         );
     }
 
+    @ExceptionHandler(InvalidPaginationException.class)
+    public ResponseEntity<ApiResponse<Void>> handleInvalidPagination(InvalidPaginationException exception) {
+        LOGGER.warn("Parámetros de paginación inválidos: {}", exception.getMessage());
+
+        return buildErrorResponse(
+                HttpStatus.BAD_REQUEST,
+                exception.getMessage(),
+                ErrorCode.INVALID_PAGINATION,
+                null
+        );
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<Void>> handleUnexpectedException(Exception exception) {
         LOGGER.error("Error inesperado al procesar la solicitud", exception);

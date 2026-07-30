@@ -3,6 +3,7 @@ package com.bethocr.transactionservice.controller;
 import com.bethocr.transactionservice.dto.request.TransactionRequest;
 import com.bethocr.transactionservice.dto.request.TransactionStatusUpdateRequest;
 import com.bethocr.transactionservice.dto.response.ApiResponse;
+import com.bethocr.transactionservice.dto.response.PageResponse;
 import com.bethocr.transactionservice.dto.response.TransactionResponse;
 import com.bethocr.transactionservice.service.TransactionService;
 import jakarta.validation.Valid;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -46,7 +48,14 @@ public class TransactionController extends BaseController {
     }
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<TransactionResponse>>> findAll() {
-        return ok(transactionService.findAll());
+    public ResponseEntity<ApiResponse<PageResponse<TransactionResponse>>> findAll(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "createdAt") String sortBy,
+            @RequestParam(defaultValue = "desc") String direction
+    ) {
+        PageResponse<TransactionResponse> response = transactionService.findAll(page, size, sortBy, direction);
+
+        return ok("Transacciones obtenidas correctamente", response);
     }
 }

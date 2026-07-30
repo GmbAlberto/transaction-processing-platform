@@ -6,6 +6,7 @@ import com.bethocr.transactionapi.dto.request.TransactionServiceRequest;
 import com.bethocr.transactionapi.dto.request.TransactionCancellationRequest;
 import com.bethocr.transactionapi.dto.request.TransactionStatusUpdateRequest;
 import com.bethocr.transactionapi.dto.response.ApiResponse;
+import com.bethocr.transactionapi.dto.response.PageResponse;
 import com.bethocr.transactionapi.dto.response.TransactionResponse;
 import com.bethocr.transactionapi.dto.response.TransactionServiceResponse;
 import jakarta.validation.Valid;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -40,5 +42,10 @@ public interface TransactionServiceClient {
     );
 
     @GetMapping("/api/transactions")
-    ApiResponse<List<TransactionServiceResponse>> findAll();
+    ApiResponse<PageResponse<TransactionServiceResponse>> findAll(
+            @RequestParam("page") int page,
+            @RequestParam("size") int size,
+            @RequestParam("sortBy") String sortBy,
+            @RequestParam("direction") String direction
+    );
 }

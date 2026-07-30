@@ -22,7 +22,10 @@ public class TransactionMapper {
                 transaction.getId(),
                 transaction.getStatus().getDescription(),
                 transaction.getReference(),
-                transaction.getOperation()
+                transaction.getOperation(),
+                transaction.getCustomer(),
+                transaction.getAmount(),
+                transaction.getCreatedAt()
         );
     }
 }

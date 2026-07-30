@@ -3,9 +3,8 @@ package com.bethocr.transactionapi.dto.response;
 public enum ErrorCode {
     VALIDATION_ERROR,
     MALFORMED_JSON,
-    TRANSACTION_NOT_FOUND,
-    REFERENCE_GENERATION_ERROR,
     DATA_INTEGRITY_VIOLATION,
+    INVALID_PAGINATION,
 
     DECRYPTION_ERROR,
     TRANSACTION_SERVICE_ERROR,
