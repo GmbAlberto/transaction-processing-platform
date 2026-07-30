@@ -131,6 +131,16 @@ public class GlobalExceptionHandler {
         );
     }
 
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<ApiResponse<Void>> handleInvalidCredentials(InvalidCredentialsException exception) {
+        return buildErrorResponse(
+                HttpStatus.UNAUTHORIZED,
+                exception.getMessage(),
+                ErrorCode.INVALID_CREDENTIALS,
+                null
+        );
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<Void>> handleUnexpectedException(Exception exception) {
         LOGGER.error("Error inesperado al procesar la solicitud", exception);
