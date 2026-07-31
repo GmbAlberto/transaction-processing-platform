@@ -3,11 +3,9 @@ package com.bethocr.transactionapi.infrastructure;
 
 import com.bethocr.transactionapi.config.TransactionServiceClientConfiguration;
 import com.bethocr.transactionapi.dto.request.TransactionServiceRequest;
-import com.bethocr.transactionapi.dto.request.TransactionCancellationRequest;
 import com.bethocr.transactionapi.dto.request.TransactionStatusUpdateRequest;
 import com.bethocr.transactionapi.dto.response.ApiResponse;
 import com.bethocr.transactionapi.dto.response.PageResponse;
-import com.bethocr.transactionapi.dto.response.TransactionResponse;
 import com.bethocr.transactionapi.dto.response.TransactionServiceResponse;
 import jakarta.validation.Valid;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -17,8 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @FeignClient(
         name = "transaction-service",
