@@ -230,8 +230,7 @@ transaction-processing-platform/
 ## 12. Consideraciones
 
 ```md
-## Consideraciones
-
 - El repositorio contiene archivos de entorno únicamente con valores destinados a la evaluación técnica.
 - Las claves incluidas no corresponden a credenciales productivas.
 - Para un entorno productivo real, los secretos deberían administrarse mediante variables protegidas, Docker Secrets o un servicio de gestión de secretos.
+```
