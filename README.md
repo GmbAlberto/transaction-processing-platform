@@ -14,7 +14,7 @@ La solución incluye:
 - Despliegue mediante Docker Compose.
 
 
-## Demo en línea
+## 1. Demo en línea
 
 La demostración se encuentra desplegada en un servidor VPS mediante Docker Compose y Nginx como reverse proxy.
 
@@ -31,7 +31,7 @@ https://api-transactions.bethocr.dev/swagger-ui/index.html
 - Contraseña: abc123#
 
 
-## Arquitectura
+## 2. Arquitectura
 
 El proyecto está compuesto por tres aplicaciones:
 
@@ -59,7 +59,7 @@ Servicio responsable de:
 - Consulta, actualización y cancelación de transacciones.
 
 
-## Requisitos
+## 3. Requisitos
 
 Para ejecutar los servicios localmente:
 
@@ -74,7 +74,7 @@ Para ejecutar el proyecto con contenedores:
 - Docker Compose
 
 
-## Variables de entorno del frontend
+## 4. Variables de entorno del frontend
 
 Para ejecutar el frontend en modo desarrollo, crear el archivo:
 
@@ -95,7 +95,7 @@ VITE_AES_SECRET_KEY=CLAVE_AES_EN_BASE64
 ```
 
 
-## Variables de entorno de transaction-api
+### Variables de entorno de transaction-api
 
 Las siguientes variables son utilizadas por transaction-api:
 ```
