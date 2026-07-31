@@ -74,7 +74,9 @@ Para ejecutar el proyecto con contenedores:
 - Docker Compose
 
 
-## 4. Variables de entorno del frontend
+## 4. Variables de entorno
+
+### Frontend sin Docker
 
 Para ejecutar el frontend en modo desarrollo, crear el archivo:
 
