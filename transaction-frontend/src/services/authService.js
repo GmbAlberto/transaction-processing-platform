@@ -2,7 +2,7 @@ import api from "./api";
 import { getToken, getTokenPayload, removeToken, saveToken } from "../utils/tokenUtils";
 
 export async function login(username, password) {
-    const response = await api.post("/api/auth/login", {
+    const response = await api.post("/auth/login", {
         username,
         password,
     });

@@ -42,7 +42,6 @@ services:
 
     networks:
       - transaction-network
-      - proxy-network
 
   transaction-frontend:
     build:
@@ -54,14 +53,12 @@ services:
     depends_on:
       - transaction-api
 
+    ports:
+      - "80:80"
+
     networks:
       - transaction-network
-      - proxy-network
 
 networks:
   transaction-network:
     driver: bridge
-
-  proxy-network:
-    external: true
-    name: bethocr_web

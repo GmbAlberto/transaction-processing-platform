@@ -18,6 +18,7 @@ public class CorsConfig {
         configuration.setAllowedOrigins(List.of(
                 // React - Vite
                 "http://localhost:5173",
+                "http://localhost:80",
                 "https://transactions.bethocr.dev"
         ));
 

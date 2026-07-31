@@ -1,6 +1,6 @@
 import api from "./api";
 
-const TRANSACTIONS_ENDPOINT = "/api/transactions";
+const TRANSACTIONS_ENDPOINT = "/transactions";
 
 export const transactionService = {
     async getTransactions({
