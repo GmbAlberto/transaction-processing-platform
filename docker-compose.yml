@@ -1,0 +1,67 @@
+services:
+  transaction-service:
+    build:
+      context: ./transaction-service
+      dockerfile: Dockerfile
+    container_name: transaction-service
+    restart: unless-stopped
+
+    ports:
+      - "8081:8081"
+
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SERVER_PORT: 8081
+      SERVER_ADDRESS: 0.0.0.0
+
+    networks:
+      - transaction-network
+
+  transaction-api:
+    build:
+      context: ./transaction-api
+      dockerfile: Dockerfile
+    container_name: transaction-api
+    restart: unless-stopped
+
+    ports:
+      - "8080:8080"
+
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SERVER_PORT: 8080
+      SERVER_ADDRESS: 0.0.0.0
+
+      TRANSACTION_SERVICE_URL: http://transaction-service:8081
+
+      AES_SECRET_KEY: "WZoGmAbYx/VxDRTdPUs8UDQUR+YWwegI+9lUs1bQLFI="
+      JWT_SECRET_KEY: "0Jq5q7tM7dJ8Y3f5m3J2o2sY0vY8xV0L9xQqg9c7m8xM3bN5dR2w6a1p8tK4yFQ="
+
+    depends_on:
+      - transaction-service
+
+    networks:
+      - transaction-network
+      - proxy-network
+
+  transaction-frontend:
+    build:
+      context: ./transaction-frontend
+      dockerfile: Dockerfile
+    container_name: transaction-frontend
+    restart: unless-stopped
+
+    depends_on:
+      - transaction-api
+
+    networks:
+      - transaction-network
+      - proxy-network
+
+networks:
+  transaction-network:
+    driver: bridge
+
+  proxy-network:
+    external: true
+    name: bethocr_web
