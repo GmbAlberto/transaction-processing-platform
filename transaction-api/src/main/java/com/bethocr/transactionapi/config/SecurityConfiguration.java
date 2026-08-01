@@ -50,7 +50,8 @@ public class SecurityConfiguration {
                                 "/h2-console/**",
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**",
-                                "/actuator/health"
+                                "/actuator/health",
+                                "/h2-console/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
